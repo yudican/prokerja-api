@@ -106,7 +106,7 @@ class JobVacancyController extends Component
         ];
 
         if (!$this->update_mode) {
-            $rule['job_image'] = 'required';
+            $rule['job_image_path'] = 'required';
         }
 
         return $this->validate($rule);

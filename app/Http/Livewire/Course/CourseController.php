@@ -102,8 +102,8 @@ class CourseController extends Component
             // 'user_id'  => 'required'
         ];
 
-        if ($this->update_mode) {
-            $rule['course_image'] = 'required';
+        if (!$this->update_mode) {
+            $rule['course_image_path'] = 'required';
         }
 
         return $this->validate($rule);

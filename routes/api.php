@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\JobVacancyController;
 use App\Http\Controllers\V1\Auth\LoginController;
 use App\Http\Controllers\V1\Auth\RegisterController;
@@ -27,6 +28,11 @@ Route::prefix('jobs')->middleware('auth:sanctum')->group(function () {
     Route::get('detail/{job_id}', [JobVacancyController::class, 'getJobDetail']);
     Route::post('apply', [JobVacancyController::class, 'apply']);
     Route::post('apply/test', [JobVacancyController::class, 'applyTest']);
+});
+
+Route::prefix('courses')->middleware('auth:sanctum')->group(function () {
+    Route::get('all', [CourseController::class, 'listCourses']);
+    Route::get('detail/{job_id}', [CourseController::class, 'getCourseDetail']);
 });
 
 Route::prefix('profile')->middleware('auth:sanctum')->group(function () {

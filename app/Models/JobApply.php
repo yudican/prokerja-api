@@ -13,7 +13,18 @@ class JobApply extends Model
 
     //public $incrementing = false;
 
-    protected $fillable = ['biodata_file','cv_file','job_vacancy_id','surat_lamaran_file','user_id'];
-    
+    protected $fillable = ['biodata_file', 'cv_file', 'job_vacancy_id', 'surat_lamaran_file', 'user_id'];
+
     protected $dates = [];
+
+
+    /**
+     * Get the user that owns the JobApplyTest
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

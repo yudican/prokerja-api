@@ -23,12 +23,12 @@ class JobApplyTestTable extends LivewireDatatable
     {
         return [
             Column::name('id')->label('No.'),
-            Column::name('job_vacancy_id')->label('Lowongan')->searchable(),
-            Column::name('job_vacancy_test_id')->label('Lowongan Test')->searchable(),
+            Column::name('user.name')->label('Pengguna')->searchable(),
+            Column::name('jobVacancy.job_name')->label('Lowongan')->searchable(),
+            Column::name('jobVacancyTest.test_name')->label('Lowongan Test')->searchable(),
             Column::callback(['test_file'], function ($file) {
-                return '<a href="{{asset(\'storage/\' . $file)}}">show file</a>';
+                return '<a href="' . $file . '">show file</a>';
             })->label(__('Test File')),
-            Column::name('user_id')->label('Pengguna')->searchable(),
 
             // Column::callback(['id'], function ($id) {
             //     return view('crud-generator-components::action-button', [

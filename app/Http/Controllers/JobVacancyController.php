@@ -124,4 +124,15 @@ class JobVacancyController extends Controller
             'data' => JobVacancy::find($job_id)
         ]);
     }
+
+    public function applyHistory()
+    {
+        $user = auth()->user();
+        $apply = JobApply::where('user_id', $user->id)->get();
+
+        return response()->json([
+            'message' => 'Apply',
+            'data' => $apply
+        ]);
+    }
 }

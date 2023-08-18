@@ -27,6 +27,7 @@ Route::prefix('auth')->group(function () {
 Route::prefix('jobs')->middleware('auth:sanctum')->group(function () {
     Route::get('all', [JobVacancyController::class, 'listJobs']);
     Route::get('detail/{job_id}', [JobVacancyController::class, 'getJobDetail']);
+    Route::get('apply/history', [JobVacancyController::class, 'applyHistory']);
     Route::post('apply', [JobVacancyController::class, 'apply']);
     Route::post('apply/test', [JobVacancyController::class, 'applyTest']);
 });

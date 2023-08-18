@@ -16,4 +16,16 @@ class Course extends Model
     protected $fillable = ['course_description', 'course_image', 'course_name', 'course_url', 'user_id'];
 
     protected $dates = [];
+
+    protected $appends = ['course_owner'];
+
+    public function getCourseOwnerAttribute()
+    {
+        $user = User::find($this->user_id);
+        if ($user) {
+            return $user->name;
+        }
+
+        return '-';
+    }
 }

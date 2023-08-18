@@ -51,7 +51,7 @@ class JobVacancyController extends Component
 
         if ($this->job_image_path) {
             $job_image = $this->job_image_path->store('upload', 'public');
-            $data['job_image'] = $job_image;
+            $data['job_image'] = getImage($job_image);
         }
 
         JobVacancy::create($data);
@@ -67,7 +67,6 @@ class JobVacancyController extends Component
         $data = [
             'job_company_name'  => $this->job_company_name,
             'job_description'  => $this->job_description,
-            'job_image'  => $this->job_image,
             'job_location'  => $this->job_location,
             'job_name'  => $this->job_name
         ];
@@ -76,7 +75,7 @@ class JobVacancyController extends Component
 
         if ($this->job_image_path) {
             $job_image = $this->job_image_path->store('upload', 'public');
-            $data = ['job_image' => $job_image];
+            $data['job_image'] = getImage($job_image);
             if (Storage::exists('public/' . $this->job_image)) {
                 Storage::delete('public/' . $this->job_image);
             }

@@ -27,7 +27,7 @@
                 <div class="card-body">
                     <x-text-field type="text" name="job_vacancy_id" label="Job Vacancy" />
                     <x-textarea type="textarea" name="test_description" label="Test Description" />
-                    <x-input-image foto="{{$test_image}}" path="{{optional($test_image_path)->temporaryUrl()}}" name="test_image_path" label="Test Image" />
+                    <x-input-photo foto="{{$test_image}}" path="{{optional($test_image_path)->temporaryUrl()}}" name="test_image_path" label="Test Image" />
                     <x-text-field type="text" name="test_name" label="Test Name" />
 
                     <div class="form-group">

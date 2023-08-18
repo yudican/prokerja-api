@@ -25,7 +25,11 @@
             @if ($form_active)
             <div class="card">
                 <div class="card-body">
-                    <x-text-field type="text" name="job_vacancy_id" label="Job Vacancy" />
+                    <x-select name="job_vacancy_id" label="Lowongan">
+                        @foreach ($jobs as $job)
+                        <option value="{{$job->id}}">{{$job->job_name}}</option>
+                        @endforeach
+                    </x-select>
                     <x-textarea type="textarea" name="test_description" label="Test Description" />
                     <x-input-photo foto="{{$test_image}}" path="{{optional($test_image_path)->temporaryUrl()}}" name="test_image_path" label="Test Image" />
                     <x-text-field type="text" name="test_name" label="Test Name" />

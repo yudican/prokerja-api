@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Job;
 
+use App\Models\JobVacancy;
 use App\Models\JobVacancyTest;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -34,7 +35,9 @@ class JobVacancyTestController extends Component
 
     public function render()
     {
-        return view('livewire.job.job-vacancy-test')->layout(config('crud-generator.layout'));
+        return view('livewire.job.job-vacancy-test', [
+            'jobs' => JobVacancy::all()
+        ])->layout(config('crud-generator.layout'));
     }
 
     public function store()

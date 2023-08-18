@@ -30,23 +30,23 @@ class JobApplyTestTable extends LivewireDatatable
             })->label(__('Test File')),
             Column::name('user_id')->label('Pengguna')->searchable(),
 
-            Column::callback(['id'], function ($id) {
-                return view('crud-generator-components::action-button', [
-                    'id' => $id,
-                    'actions' => [
-                        [
-                            'type' => 'button',
-                            'route' => 'getDataById(' . $id . ')',
-                            'label' => 'Edit',
-                        ],
-                        [
-                            'type' => 'button',
-                            'route' => 'confirmDelete(' . $id . ')',
-                            'label' => 'Hapus',
-                        ]
-                    ]
-                ]);
-            })->label(__('Aksi')),
+            // Column::callback(['id'], function ($id) {
+            //     return view('crud-generator-components::action-button', [
+            //         'id' => $id,
+            //         'actions' => [
+            //             [
+            //                 'type' => 'button',
+            //                 'route' => 'getDataById(' . $id . ')',
+            //                 'label' => 'Edit',
+            //             ],
+            //             [
+            //                 'type' => 'button',
+            //                 'route' => 'confirmDelete(' . $id . ')',
+            //                 'label' => 'Hapus',
+            //             ]
+            //         ]
+            //     ]);
+            // })->label(__('Aksi')),
         ];
     }
 

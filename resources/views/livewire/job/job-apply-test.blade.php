@@ -7,7 +7,7 @@
                         <a href="{{route('dashboard')}}">
                             <span><i class="fas fa-arrow-left mr-3"></i>Data Lamaran Test</span>
                         </a>
-                        <div class="pull-right">
+                        {{-- <div class="pull-right">
                             @if ($form_active)
                             <button class="btn btn-danger btn-sm" wire:click="toggleForm(false)"><i class="fas fa-times"></i> Cancel</button>
                             @else
@@ -16,7 +16,7 @@
                                 New</button>
                             @endif
                             @endif
-                        </div>
+                        </div> --}}
                     </h4>
                 </div>
             </div>

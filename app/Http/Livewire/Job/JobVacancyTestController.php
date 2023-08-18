@@ -44,7 +44,7 @@ class JobVacancyTestController extends Component
         $data = [
             'job_vacancy_id'  => $this->job_vacancy_id,
             'test_description'  => $this->test_description,
-            'test_image'  => $test_image,
+            'test_image'  => getImage($test_image),
             'test_name'  => $this->test_name
         ];
 
@@ -69,7 +69,7 @@ class JobVacancyTestController extends Component
 
         if ($this->test_image_path) {
             $test_image = $this->test_image_path->store('upload', 'public');
-            $data = ['test_image' => $test_image];
+            $data['test_image'] = getImage($test_image);
             if (Storage::exists('public/' . $this->test_image)) {
                 Storage::delete('public/' . $this->test_image);
             }
@@ -96,6 +96,10 @@ class JobVacancyTestController extends Component
             'test_description'  => 'required',
             'test_name'  => 'required'
         ];
+
+        if (!$this->update_mode) {
+            $rule['test_image_path'] = 'required';
+        }
 
         return $this->validate($rule);
     }
@@ -146,6 +150,7 @@ class JobVacancyTestController extends Component
         $this->job_vacancy_id = null;
         $this->test_description = null;
         $this->test_image_path = null;
+        $this->test_image = null;
         $this->test_name = null;
         $this->form = true;
         $this->form_active = false;

@@ -32,7 +32,7 @@ Route::prefix('jobs')->middleware('auth:sanctum')->group(function () {
 
 Route::prefix('courses')->middleware('auth:sanctum')->group(function () {
     Route::get('all', [CourseController::class, 'listCourses']);
-    Route::get('detail/{job_id}', [CourseController::class, 'getCourseDetail']);
+    Route::get('detail/{course_id}', [CourseController::class, 'getCourseDetail']);
 });
 
 Route::prefix('profile')->middleware('auth:sanctum')->group(function () {

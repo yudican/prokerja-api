@@ -73,7 +73,7 @@ class LoginController extends Controller
                 'access_token' => $tokenResult,
                 'token_type' => 'Bearer',
                 'user' => new UserResource($user),
-                'sysconf' => DB::table('sysconf')->select(['sysconf', 'valueconf'])->get()
+                // 'sysconf' => DB::table('sysconf')->select(['sysconf', 'valueconf'])->get()
             ]
         ];
         return response()->json($respon, 200);

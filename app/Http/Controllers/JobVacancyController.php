@@ -38,7 +38,7 @@ class JobVacancyController extends Controller
             // Simpan file ke storage
             $path = $file->storeAs('tests', $filename);
 
-            $dataUser['test_file'] = asset('storage/' . $path);
+            $data['test_file'] = asset('storage/' . $path);
         }
 
         $test = JobApplyTest::create($data);
@@ -76,7 +76,7 @@ class JobVacancyController extends Controller
             // Simpan file ke storage
             $path = $file->storeAs('apply/biodata', $filename);
 
-            $dataUser['biodata_file'] = asset('storage/' . $path);
+            $data['biodata_file'] = asset('storage/' . $path);
         }
         if ($request->hasFile('cv_file')) {
             $file = $request->file('cv_file');
@@ -87,7 +87,7 @@ class JobVacancyController extends Controller
             // Simpan file ke storage
             $path = $file->storeAs('apply/cv', $filename);
 
-            $dataUser['cv_file'] = asset('storage/' . $path);
+            $data['cv_file'] = asset('storage/' . $path);
         }
         if ($request->hasFile('surat_lamaran_file')) {
             $file = $request->file('surat_lamaran_file');
@@ -98,7 +98,7 @@ class JobVacancyController extends Controller
             // Simpan file ke storage
             $path = $file->storeAs('apply/lamaran', $filename);
 
-            $dataUser['surat_lamaran_file'] = asset('storage/' . $path);
+            $data['surat_lamaran_file'] = asset('storage/' . $path);
         }
 
         $apply = JobApply::create($data);

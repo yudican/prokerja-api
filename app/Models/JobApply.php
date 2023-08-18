@@ -17,6 +17,15 @@ class JobApply extends Model
 
     protected $dates = [];
 
+    /**
+     * Get the jobVacancy that owns the JobApplyTest
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function jobVacancy()
+    {
+        return $this->belongsTo(JobVacancy::class, 'job_vacancy_id');
+    }
 
     /**
      * Get the user that owns the JobApplyTest

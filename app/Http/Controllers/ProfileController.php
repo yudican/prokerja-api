@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\UserResource;
+use App\Models\Notification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,6 +22,15 @@ class ProfileController extends Controller
             'status' => 'success',
             'data' => new UserResource($user),
             'message' => 'Profile User Ditemukan'
+        ]);
+    }
+
+    public function getNotifications()
+    {
+        return response()->json([
+            'status' => 'success',
+            'data' => Notification::where('user_id', auth()->user()->id)->get(),
+            'message' => 'Notifikasi Ditemukan'
         ]);
     }
 

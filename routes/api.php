@@ -37,6 +37,7 @@ Route::prefix('courses')->middleware('auth:sanctum')->group(function () {
 
 Route::prefix('profile')->middleware('auth:sanctum')->group(function () {
     Route::get('/', [JobVacancyController::class, 'getUserProfile']);
+    Route::get('/notification', [JobVacancyController::class, 'getNotifications']);
     Route::post('update', [JobVacancyController::class, 'updateProfile']);
     Route::post('update/password', [JobVacancyController::class, 'updatePassword']);
 });

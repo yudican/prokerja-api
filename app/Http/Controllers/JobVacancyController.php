@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\JobApply;
 use App\Models\JobApplyTest;
 use App\Models\JobVacancy;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -41,6 +42,15 @@ class JobVacancyController extends Controller
         }
 
         $test = JobApplyTest::create($data);
+
+        Notification::create(
+            [
+                'user_id' => $user->id,
+                'name' => 'Mengerjakan Test',
+                'description' => 'Terima kasih telah mengerjakan test yang telah kami sediakan',
+                'status' => '0'
+            ]
+        );
 
         return response()->json([
             'message' => 'Apply Test',
@@ -92,6 +102,14 @@ class JobVacancyController extends Controller
         }
 
         $apply = JobApply::create($data);
+        Notification::create(
+            [
+                'user_id' => $user->id,
+                'name' => 'Mengirim Lamaran',
+                'description' => 'Terima kasih, Lamaran kamu telah kami terima',
+                'status' => '0'
+            ]
+        );
 
         return response()->json([
             'message' => 'Apply',

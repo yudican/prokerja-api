@@ -16,11 +16,11 @@
                 </div>
                 <div class="form-group">
                     <label for="password" class="placeholder"><b>Password</b></label>
-                    @if (Route::has('password.request'))
+                    {{-- @if (Route::has('password.request'))
                     <a class="link float-right" href="{{ route('password.request') }}">
                         {{ __('Lupa kata sandi?') }}
                     </a>
-                    @endif
+                    @endif --}}
                     <div class="position-relative">
                         <input id="password" name="password" type="password" class="form-control" required>
                         {{-- <div class="show-password">
@@ -33,8 +33,7 @@
                         <input type="checkbox" class="custom-control-input" name="remember" id="rememberme">
                         <label class="custom-control-label m-0" for="rememberme">Remember Me</label>
                     </div>
-                    <button type="submit"
-                        class="btn btn-secondary col-md-5 float-right mt-3 mt-sm-0 fw-bold">Masuk</button>
+                    <button type="submit" class="btn btn-secondary col-md-5 float-right mt-3 mt-sm-0 fw-bold">Masuk</button>
                 </div>
             </div>
         </form>

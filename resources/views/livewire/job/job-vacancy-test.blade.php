@@ -26,13 +26,14 @@
             <div class="card">
                 <div class="card-body">
                     <x-select name="job_vacancy_id" label="Lowongan">
+                        <option value="">Pilih lowongan</option>
                         @foreach ($jobs as $job)
                         <option value="{{$job->id}}">{{$job->job_name}}</option>
                         @endforeach
                     </x-select>
+                    <x-text-field type="text" name="test_name" label="Test Name" />
                     <x-textarea type="textarea" name="test_description" label="Test Description" />
                     <x-input-photo foto="{{$test_image}}" path="{{optional($test_image_path)->temporaryUrl()}}" name="test_image_path" label="Test Image" />
-                    <x-text-field type="text" name="test_name" label="Test Name" />
 
                     <div class="form-group">
                         <button class="btn btn-primary pull-right" wire:click="{{$update_mode ? 'update' : 'store'}}">Simpan</button>

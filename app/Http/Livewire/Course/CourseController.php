@@ -50,7 +50,7 @@ class CourseController extends Component
 
         if ($this->course_image_path) {
             $course_image = $this->course_image_path->store('upload', 'public');
-            $data['course_image'] = $course_image;
+            $data['course_image'] = getImage($course_image);
         }
 
         Course::create($data);
@@ -73,7 +73,7 @@ class CourseController extends Component
 
         if ($this->course_image_path) {
             $course_image = $this->course_image_path->store('upload', 'public');
-            $data = ['course_image' => $course_image];
+            $data['course_image'] = getImage($course_image);
             if (Storage::exists('public/' . $this->course_image)) {
                 Storage::delete('public/' . $this->course_image);
             }

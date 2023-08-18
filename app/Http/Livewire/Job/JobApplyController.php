@@ -48,9 +48,9 @@ class JobApplyController extends Component
         $surat_lamaran_file = $this->surat_lamaran_file_path->store('upload', 'public');
         $data = [
             'biodata_file'  => $this->biodata_file,
-            'cv_file'  => $cv_file,
-            'job_vacancy_id'  => $job_vacancy_id,
-            'surat_lamaran_file'  => $surat_lamaran_file,
+            'cv_file'  => getImage($cv_file),
+            'job_vacancy_id'  => getImage($job_vacancy_id),
+            'surat_lamaran_file'  => getImage($surat_lamaran_file),
             'user_id'  => $this->user_id
         ];
 
@@ -76,7 +76,7 @@ class JobApplyController extends Component
 
         if ($this->cv_file_path) {
             $cv_file = $this->cv_file_path->store('upload', 'public');
-            $data = ['cv_file' => $cv_file];
+            $data['cv_file'] = getImage($cv_file);
             if (Storage::exists('public/' . $this->cv_file)) {
                 Storage::delete('public/' . $this->cv_file);
             }
@@ -84,7 +84,7 @@ class JobApplyController extends Component
 
         if ($this->job_vacancy_id_path) {
             $job_vacancy_id = $this->job_vacancy_id_path->store('upload', 'public');
-            $data = ['job_vacancy_id' => $job_vacancy_id];
+            $data['job_vacancy_id'] = getImage($job_vacancy_id);
             if (Storage::exists('public/' . $this->job_vacancy_id)) {
                 Storage::delete('public/' . $this->job_vacancy_id);
             }
@@ -92,7 +92,7 @@ class JobApplyController extends Component
 
         if ($this->surat_lamaran_file_path) {
             $surat_lamaran_file = $this->surat_lamaran_file_path->store('upload', 'public');
-            $data = ['surat_lamaran_file' => $surat_lamaran_file];
+            $data['surat_lamaran_file'] = getImage($surat_lamaran_file);
             if (Storage::exists('public/' . $this->surat_lamaran_file)) {
                 Storage::delete('public/' . $this->surat_lamaran_file);
             }

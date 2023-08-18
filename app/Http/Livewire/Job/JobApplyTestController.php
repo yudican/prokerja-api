@@ -44,7 +44,7 @@ class JobApplyTestController extends Component
         $data = [
             'job_vacancy_id'  => $this->job_vacancy_id,
             'job_vacancy_test_id'  => $this->job_vacancy_test_id,
-            'test_file'  => $test_file,
+            'test_file'  => getImage($test_file),
             'user_id'  => $this->user_id
         ];
 
@@ -69,7 +69,7 @@ class JobApplyTestController extends Component
 
         if ($this->test_file_path) {
             $test_file = $this->test_file_path->store('upload', 'public');
-            $data = ['test_file' => $test_file];
+            $data['test_file'] = getImage($test_file);
             if (Storage::exists('public/' . $this->test_file)) {
                 Storage::delete('public/' . $this->test_file);
             }

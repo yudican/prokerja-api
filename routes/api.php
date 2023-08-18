@@ -4,6 +4,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\JobVacancyController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -36,8 +37,8 @@ Route::prefix('courses')->middleware('auth:sanctum')->group(function () {
 });
 
 Route::prefix('profile')->middleware('auth:sanctum')->group(function () {
-    Route::get('/', [JobVacancyController::class, 'getUserProfile']);
-    Route::get('/notification', [JobVacancyController::class, 'getNotifications']);
-    Route::post('update', [JobVacancyController::class, 'updateProfile']);
-    Route::post('update/password', [JobVacancyController::class, 'updatePassword']);
+    Route::get('/', [ProfileController::class, 'getUserProfile']);
+    Route::get('/notification', [ProfileController::class, 'getNotifications']);
+    Route::post('update', [ProfileController::class, 'updateProfile']);
+    Route::post('update/password', [ProfileController::class, 'updatePassword']);
 });

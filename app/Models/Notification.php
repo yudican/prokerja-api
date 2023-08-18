@@ -9,7 +9,7 @@ class Notification extends Model
 {
     use HasFactory;
 
-    protected $appends = [
+    protected $fillable = [
         'user_id',
         'name',
         'description',

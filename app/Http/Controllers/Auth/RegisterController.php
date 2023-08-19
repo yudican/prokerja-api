@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
+use App\Models\Role;
+use App\Models\Team;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -11,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
-use Ramsey\Uuid\Uuid;
 use Str;
 
 class RegisterController extends Controller
@@ -35,19 +36,15 @@ class RegisterController extends Controller
 
         try {
             DB::beginTransaction();
-            $last_id = User::orderBy('id', 'desc')->first();
-            $user = new User([
-                'id' => $last_id ? $last_id->id + 1 : 1,
-                // 'uuid' => Uuid::uuid4(),
+            $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
-                // 'phone' => $request->phone,
                 'password' => Hash::make($request->password),
             ]);
-            $user->save();
 
-            // send email
-            // $this->sendEmail($request);
+            $role_type = Role::find('0feb7d3a-90c0-42b9-be3f-63757088cb9a')->role_type;
+            $team = Team::find(1);
+            $team->users()->attach($user, ['role' => $role_type]);
             $tokenResult = $user->createToken('api_token')->plainTextToken;
 
             DB::commit();

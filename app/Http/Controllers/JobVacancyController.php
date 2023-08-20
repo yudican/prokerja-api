@@ -36,7 +36,7 @@ class JobVacancyController extends Controller
             $filename = md5($file->getClientOriginalName() . '' . $user->id . '' . date('YmdHis') . '_' . rand()) . '.' . $file->extension();
 
             // Simpan file ke storage
-            $path = $file->storeAs('public/apply/test', $filename);
+            $path = $file->storeAs('apply/test', $filename, 'public');
 
             $data['test_file'] = asset('storage/' . $path);
         }
@@ -74,7 +74,7 @@ class JobVacancyController extends Controller
             $filename = md5($file->getClientOriginalName() . '' . $user->id . '' . date('YmdHis') . '_' . rand()) . '.' . $file->extension();
 
             // Simpan file ke storage
-            $path = $file->storeAs('public/apply/biodata', $filename);
+            $path = $file->storeAs('apply/biodata', $filename, 'public');
 
             $data['biodata_file'] = asset('storage/' . $path);
         }
@@ -85,7 +85,7 @@ class JobVacancyController extends Controller
             $filename = md5($file->getClientOriginalName() . '' . $user->id . '' . date('YmdHis') . '_' . rand()) . '.' . $file->extension();
 
             // Simpan file ke storage
-            $path = $file->storeAs('public/apply/cv', $filename);
+            $path = $file->storeAs('apply/cv', $filename, 'public');
 
             $data['cv_file'] = asset('storage/' . $path);
         }
@@ -96,7 +96,7 @@ class JobVacancyController extends Controller
             $filename = md5($file->getClientOriginalName() . '' . $user->id . '' . date('YmdHis') . '_' . rand()) . '.' . $file->extension();
 
             // Simpan file ke storage
-            $path = $file->storeAs('public/apply/lamaran', $filename);
+            $path = $file->storeAs('apply/lamaran', $filename, 'public');
 
             $data['surat_lamaran_file'] = asset('storage/' . $path);
         }

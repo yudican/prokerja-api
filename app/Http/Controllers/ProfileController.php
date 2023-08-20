@@ -96,7 +96,7 @@ class ProfileController extends Controller
                 }
 
                 // Simpan file ke storage
-                $path = $file->storeAs('photos', $filename);
+                $path = $file->storeAs('photos', $filename, 'public');
 
                 $dataUser['foto'] = asset('storage/' . $path);
             }

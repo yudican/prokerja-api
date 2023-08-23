@@ -66,4 +66,10 @@ class JobVacancyTestTable extends LivewireDatatable
     {
         $this->emit('refreshLivewireDatatable');
     }
+
+    public function confirmDelete($id)
+    {
+        $this->emit('getJobVacancyTestId', $id);
+        $this->emit('confirmDelete');
+    }
 }

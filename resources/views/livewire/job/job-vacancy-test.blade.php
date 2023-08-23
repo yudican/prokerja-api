@@ -75,6 +75,11 @@
                 
             });
 
+            window.livewire.on('confirmDelete', (data) => {
+                $('#confirm-modal').modal('show')
+            });
+
+
             window.livewire.on('closeModal', (data) => {
                 $('#confirm-modal').modal('hide')
             });

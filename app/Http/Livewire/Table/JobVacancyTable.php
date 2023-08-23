@@ -70,7 +70,7 @@ class JobVacancyTable extends LivewireDatatable
 
     public function confirmDelete($id)
     {
-        $this->emit('getCourseId', $id);
+        $this->emit('getJobVacancyId', $id);
         $this->emit('confirmDelete');
     }
 }
